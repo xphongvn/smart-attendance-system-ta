@@ -7,4 +7,6 @@ while True:
     if not ret:
         exit()
     cv2.imshow("Live Video", cameraFrame)
+    if cv2.waitKey(1) == ord('q'):
+        break
     continue
