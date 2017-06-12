@@ -72,6 +72,8 @@ def collect_face_data(user_names):
                     image_index += 1
                     break
 
+            time.sleep(0.2)
+
         # Clear all windows before new collection
         cv2.destroyAllWindows()
 
