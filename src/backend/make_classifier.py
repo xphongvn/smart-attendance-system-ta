@@ -7,7 +7,7 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import GridSearchCV
 from sklearn.svm import SVC
 
-id_name = ["Alec", "Greg", "Phong"]
+id_name = ["Alec", "Emil", "Greg", "Phong"]
 
 
 def train(features, labels):

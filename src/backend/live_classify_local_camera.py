@@ -4,7 +4,7 @@ import os
 import cv2
 import pickle
 
-id_name = ["Alec", "Greg", "Phong", "Emil"]
+id_name = ["Alec", "Emil", "Greg", "Phong"]
 
 
 def classify(aligned_face, net, clf, le):
@@ -17,7 +17,7 @@ def classify(aligned_face, net, clf, le):
     return person
 
 # path to the face alignment model
-dLib_predictor = "../../resource/shaqpe_predictor_68_face_landmarks.dat"
+dLib_predictor = "../../resource/shape_predictor_68_face_landmarks.dat"
 # construct the face alignment model
 align = openface.AlignDlib(dLib_predictor)
 # path to deep neural network for feature representation
