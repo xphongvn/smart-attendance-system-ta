@@ -4,7 +4,7 @@ import os
 import cv2
 import pickle
 
-id_name = ["Alec", "Emil", "Greg", "Phong"]
+id_name = ["Alec", "Emil", "Greg", "Phong", "Thinh"]
 
 
 def classify(aligned_face, net, clf, le):
