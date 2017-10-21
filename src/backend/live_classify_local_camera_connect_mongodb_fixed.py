@@ -11,6 +11,7 @@ id_name = ["Alec", "Emil", "Greg", "Phong", "Thinh"]
 confidence_level = [0] * len(id_name)
 reg_times = [0] * len(id_name)
 last_in = [0] * len(id_name)
+last_time_clean = 0
 
 
 def push_to_db(person_id):
@@ -45,8 +46,8 @@ def classify(aligned_face, net, clf, le):
 
 if __name__ == "__main__":
 
-    CONFIDENCE_THRESHOLD = 0.2
-    show_video = False
+    CONFIDENCE_THRESHOLD = 0.0
+    show_video = True
     # path to the face alignment model
     dLib_predictor = "../../resource/shape_predictor_68_face_landmarks.dat"
     # construct the face alignment model
@@ -83,7 +84,7 @@ if __name__ == "__main__":
                         # Check if the previous recognition is close to current time
                         if (current_time - reg_times[id]) < 2 and \
                                 (current_time - last_in[id] > 120 or last_in[id] == 0):
-                            confidence_level[id] += 40
+                            confidence_level[id] += 50
                             if confidence_level[id] > 80:
                                 confidence_level[id] = 0
                                 last_in[id] = current_time
@@ -99,7 +100,7 @@ if __name__ == "__main__":
                         face_top_left = (bb2.left(), bb2.top())
                         face_bottom_right = (bb2.right(), bb2.bottom())
                         cv2.rectangle(cameraFrame, face_top_left, face_bottom_right, rectColor)
-                        cv2.putText(cameraFrame, person_name, face_top_left,
+                        cv2.putText(cameraFrame, id_name[id], face_top_left,
                                 fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=1, color=textColor, thickness=2)
 
                 if show_video:
@@ -113,7 +114,9 @@ if __name__ == "__main__":
 
             # reset confidence if person not seen for 2 minutes
             current_time = time.time()
-            for i in xrange(len(reg_times)):
-                if current_time - reg_times[i] > 240:
-                    confidence_level[i] = 0
+            # Only reset every 30 secs.
+            if (current_time - last_time_clean) > 30:
+                for i in xrange(len(reg_times)):
+                    if current_time - reg_times[i] > 240:
+                        confidence_level[i] = 0
             print(confidence_level)
