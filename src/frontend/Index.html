@@ -7,49 +7,39 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
 
 </head>
-<body ng-app="BlankApp" ng-cloak>
+<body ng-app="SmartAttendanceSystem" ng-cloak>
   <!--
     Your HTML content here
-  -->  
-  
-   <md-toolbar class="md-hue-2">
-      <div class="md-toolbar-tools">
-        <md-button class="md-icon-button" aria-label="Settings" ng-disabled="true">
-          <md-icon><i class="zmdi zmdi-menu zmdi-hc-2x"></i></md-icon>
-        </md-button>
+  -->
 
-        <h2 flex md-truncate>NAME</h2>
+  <md-toolbar class="md-hue-2">
+    <div class="md-toolbar-tools">
+      <md-button class="md-icon-button" aria-label="Settings" ng-disabled="true">
+        <md-icon><i class="zmdi zmdi-menu zmdi-hc-2x"></i></md-icon>
+      </md-button>
 
-        <md-button class="md-icon-button" aria-label="Favorite">
-          <md-icon md-svg-icon="img/icons/favorite.svg" style="color: greenyellow;"></md-icon>
-        </md-button>
+      <h2 flex md-truncate>NAME</h2>
 
-        <md-button class="md-icon-button" aria-label="More">
-          <md-icon md-svg-icon="img/icons/more_vert.svg"></md-icon>
-        </md-button>
-      </div>
-    </md-toolbar>
+      <md-button class="md-icon-button" aria-label="Favorite">
+        <md-icon md-svg-icon="img/icons/favorite.svg" style="color: greenyellow;"></md-icon>
+      </md-button>
 
+      <md-button class="md-icon-button" aria-label="More">
+        <md-icon md-svg-icon="img/icons/more_vert.svg"></md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+
+  <md-list ng-controller="StudentListCtrl as vm">
     <md-subheader class="md-no-sticky">People</md-subheader>
-  <md-list-item>
-    <img alt="{{ person.name }}" src="Alec_0.jpg" class="md-avatar" />
-    <p>Alec Blagg</p>
-    <i class="zmdi zmdi-circle" style="color:green"></i>
-  </md-list-item>
-  </md-list-item>
+    <md-list-item ng-repeat="student in vm.students">
+      <img alt="{{ student.name }}" ng-src="{{ student.picture }}" class="md-avatar" />
+      <p>{{ student.name }}</p>
+      <i class="zmdi zmdi-circle" style="color:green" ng-if="student.status == 'in'"></i>
+      <i class="zmdi zmdi-circle" style="color:red" ng-if="student.status == 'out'"></i>
+    </md-list-item>
+  </md-list>
 
-  <md-list-item>
-    <img alt="{{ person.name }}" src="Emil_4.jpg" class="md-avatar" />
-    <p>Emil Balian</p>
-     <i class="zmdi zmdi-circle" style="color:green"></i>
-  </md-list-item>
-
-  <md-list-item>
-    <img alt="{{ person.name }}" src="Greg_3.jpg" class="md-avatar" />
-    <p>Greg Crow</p>
-    <i class="zmdi zmdi-circle style" style="color:red"></i>
-  </md-list-item>
-  
   <!-- Angular Material requires Angular.js Libraries -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
@@ -58,14 +48,10 @@
 
   <!-- Angular Material Library -->
   <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
-  
+
   <!-- Your application bootstrap  -->
-  <script type="text/javascript">    
-    /**
-     * You must include the dependency on 'ngMaterial' 
-     */
-    angular.module('BlankApp', ['ngMaterial']);
-  </script>
-  
+  <script src="./scripts/app.js"></script>
+  <script src="./scripts/student-list.controller.js"></script>
+
 </body>
 </html>
