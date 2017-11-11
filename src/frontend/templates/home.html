@@ -1,0 +1,9 @@
+  <md-list>
+  	<md-subheader class="md-no-sticky">People</md-subheader>
+  	<md-list-item ng-repeat="student in vm.students">
+  		<img alt="{{ student.name }}" ng-src="{{ student.picture }}" class="md-avatar" />
+  		<p>{{ student.name }}</p>
+  		<i class="zmdi zmdi-circle" style="color:green" ng-if="student.status == 'in'"></i>
+  		<i class="zmdi zmdi-circle" style="color:red" ng-if="student.status == 'out'"></i>
+  	</md-list-item>
+  </md-list>

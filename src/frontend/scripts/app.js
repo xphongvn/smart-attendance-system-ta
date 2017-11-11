@@ -1,1 +1,4 @@
-angular.module('SmartAttendanceSystem', ['ngMaterial']);
+angular.module('SmartAttendanceSystem', [
+	'ngMaterial',
+	'ui.router'
+	]);
