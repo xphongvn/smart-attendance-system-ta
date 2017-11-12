@@ -1,0 +1,66 @@
+<div>
+
+      <!--
+      Your HTML content here
+    -->  
+
+    <md-list>
+     <div layout="row" layout-align="center center">
+      <h3 class="md-subhead">  </h3>
+    </div>
+
+    <div layout="row" layout-warp>
+      <div flex="45">
+
+      </div>
+
+      <div flex="50">
+        <img src="{{ vm.user.picture }}">
+
+      </div>
+      <div flex>
+        <i class="zmdi zmdi-star zmdi-hc-2x" style="color: yellow"></i>
+      </div>  
+    </div>
+
+    <div layout="row" layout-wrap>
+      <div flex="15">
+
+      </div>  
+
+      <div flex="33">
+
+      </div>  
+
+      <div flex= "10"> 
+       <h3 class="md-headline">{{ vm.user.name }}</h3>
+     </div>
+     <div flex> 
+       <h4 class="md-headline"><i class="zmdi zmdi-circle" ng-if="vm.user.status == 'in'" style="color:green"></i></h4>
+       <h4 class="md-headline"><i class="zmdi zmdi-circle" ng-if="vm.user.status == 'out'" style="color:red"></i></h4>
+     </div>
+
+   </div>
+  </md-list>
+
+
+
+  <md-list>
+    <md-subheader class="md-no-sticky">Student</md-subheader>
+    <md-list-item>
+
+      <p>Picture and name</p>
+      <time>DATE & TIME</time> 
+      <p><time datetime></time></p>  
+      <dev>In/out</dev>
+    </md-list-item>
+
+    <md-list-item ng-repeat="checkIn in vm.checkIns">
+      <img alt="{{ vm.user.name }}" src="{{ vm.user.picture }}" class="md-avatar" />
+      <p>{{ vm.user.name }}</p>
+      <p>{{ checkIn.dateTime }}</p> 
+      <i class="zmdi zmdi-long-arrow-left zmdi-hc-3x" ng-if="checkIn.status == 'in'" style="color:green"></i>
+      <i class="zmdi zmdi-long-arrow-left zmdi-hc-3x" ng-if="checkIn.status == 'out'" style="color:red"></i>
+    </md-list-item>
+  </md-list>
+</div>
