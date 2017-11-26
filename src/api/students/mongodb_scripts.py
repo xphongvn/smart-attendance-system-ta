@@ -24,3 +24,41 @@ for i in xrange(len(id_name)):
             "photo": photo_url[i]}
     post_id = db_to_push.insert_one(post).inserted_id
     print(post_id)
+
+###############################################################################
+# Create fake Check-in
+# Drop this database if exist
+db.drop_collection('CheckInLog')
+
+# Push to this database some fake check in data
+db_to_push = db['CheckInLog']
+
+post = { "userName" : "Phong",
+         "type" : "in",
+         "location" : "Tokyo Academics",
+         "createdAt" : 1511672254.04792}
+post_id = db_to_push.insert_one(post).inserted_id
+print(post_id)
+
+post = {"userName" : "Greg",
+        "type" : "in",
+        "location" : "Tokyo Academics",
+        "createdAt" : 1511672267.02381}
+post_id = db_to_push.insert_one(post).inserted_id
+print(post_id)
+
+post = {"userName" : "Alec",
+        "type" : "in",
+        "location" : "Tokyo Academics",
+        "createdAt" : 1511672276.36018}
+
+post_id = db_to_push.insert_one(post).inserted_id
+print(post_id)
+
+post = {"userName" : "Thinh",
+        "type" : "in",
+        "location" : "Tokyo Academics",
+        "createdAt" : 1511672276.3994}
+
+post_id = db_to_push.insert_one(post).inserted_id
+print(post_id)
