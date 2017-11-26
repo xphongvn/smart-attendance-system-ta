@@ -14,7 +14,7 @@ UserClassifyIdCollection = db['UserClassifyId']
 # Create your views here.
 
 
-def index(request):
+def studentList(request):
     students = list(UserClassifyIdCollection.find())
     print(students)
     return HttpResponse(dumps(students, sort_keys=True), content_type="application/json")

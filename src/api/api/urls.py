@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from students.views import index
+from students.views import studentList
+from checkins.views import checkinList
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^students/', index, name='students')
+    url(r'^students/', studentList, name='students'),
+    url(r'^checkins/', checkinList, name='checkins')
 ]
