@@ -19,9 +19,8 @@ db.drop_collection('UserClassifyId')
 db_to_push = db['UserClassifyId']
 
 for i in xrange(len(id_name)):
-        post = {"userName": id_name[i],
-                "classifyId": i,
-                "photo": photo_url[i]}
-        post_id = db_to_push.insert_one(post).inserted_id
-        print(post_id)
-
+    post = {"userName": id_name[i],
+            "classifyId": i,
+            "photo": photo_url[i]}
+    post_id = db_to_push.insert_one(post).inserted_id
+    print(post_id)
