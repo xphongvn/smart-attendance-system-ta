@@ -11,7 +11,7 @@ photo_url = ["https://image.ibb.co/mPMU7m/Alec_0.jpg",
 client = MongoClient('mongodb://localhost:27017')
 db = client['ta_sas']
 
-# Insert to UserClassifyID Database
+# Insert to UserClassifyId Database
 # Drop this database if exist
 db.drop_collection('UserClassifyId')
 
@@ -34,6 +34,7 @@ db.drop_collection('CheckInLog')
 db_to_push = db['CheckInLog']
 
 post = { "userName" : "Phong",
+         "classifyId": 3,
          "type" : "in",
          "location" : "Tokyo Academics",
          "createdAt" : 1511672254.04792}
@@ -41,6 +42,7 @@ post_id = db_to_push.insert_one(post).inserted_id
 print(post_id)
 
 post = {"userName" : "Greg",
+        "classifyId": 2,
         "type" : "in",
         "location" : "Tokyo Academics",
         "createdAt" : 1511672267.02381}
@@ -48,6 +50,7 @@ post_id = db_to_push.insert_one(post).inserted_id
 print(post_id)
 
 post = {"userName" : "Alec",
+        "classifyId": 0,
         "type" : "in",
         "location" : "Tokyo Academics",
         "createdAt" : 1511672276.36018}
@@ -56,6 +59,7 @@ post_id = db_to_push.insert_one(post).inserted_id
 print(post_id)
 
 post = {"userName" : "Thinh",
+        "classifyId": 4,
         "type" : "in",
         "location" : "Tokyo Academics",
         "createdAt" : 1511672276.3994}

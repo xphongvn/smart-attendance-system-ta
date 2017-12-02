@@ -23,5 +23,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^students/(?P<student_id>.+)$', getStudent, name='student'),
     url(r'^students$', studentList, name='students'),
-    url(r'^checkins/', checkinList, name='checkins')
+    url(r'^checkins$', checkinList, name='checkins')
 ]
