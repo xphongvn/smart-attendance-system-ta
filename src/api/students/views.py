@@ -16,5 +16,6 @@ UserClassifyIdCollection = db['UserClassifyId']
 
 def studentList(request):
     students = list(UserClassifyIdCollection.find())
-    print(students)
-    return HttpResponse(dumps(students, sort_keys=True), content_type="application/json")
+    response = HttpResponse(dumps(students, sort_keys=True), content_type="application/json")
+    response['Access-Control-Allow-Origin'] = 'http://localhost:3000'
+    return response

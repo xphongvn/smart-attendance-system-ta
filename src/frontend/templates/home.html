@@ -1,8 +1,8 @@
   <md-list>
   	<md-subheader class="md-no-sticky">People</md-subheader>
   	<md-list-item ng-repeat="student in vm.students" ui-sref="student( { id: student.id})">
-  		<img alt="{{ student.name }}" ng-src="{{ student.picture }}" class="md-avatar" />
-  		<p>{{ student.name }}</p>
+  		<img alt="{{ student.name }}" ng-src="{{ student.photo }}" class="md-avatar" />
+  		<p>{{ student.userName }}</p>
   		<i class="zmdi zmdi-circle" style="color:green" ng-if="student.status == 'in'"></i>
   		<i class="zmdi zmdi-circle" style="color:red" ng-if="student.status == 'out'"></i>
   	</md-list-item>

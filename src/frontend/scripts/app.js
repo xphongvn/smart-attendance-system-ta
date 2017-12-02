@@ -1,4 +1,5 @@
 angular.module('SmartAttendanceSystem', [
 	'ngMaterial',
-	'ui.router'
+	'ui.router',
+  'ngResource'
 	]);
