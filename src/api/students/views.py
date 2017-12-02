@@ -13,9 +13,13 @@ UserClassifyIdCollection = db['UserClassifyId']
 
 # Create your views here.
 
+def mapObject(obj):
+    obj['_id'] = str(obj.get('_id'))
+    return obj
 
 def studentList(request):
     students = list(UserClassifyIdCollection.find())
-    response = HttpResponse(dumps(students, sort_keys=True), content_type="application/json")
+    convertedStudents = list(map(mapObject, students))
+    response = HttpResponse(dumps(convertedStudents, sort_keys=True), content_type="application/json")
     response['Access-Control-Allow-Origin'] = 'http://localhost:3000'
     return response
