@@ -17,9 +17,11 @@ from django.conf.urls import url
 from django.contrib import admin
 from students.views import studentList
 from checkins.views import checkinList
+from students.views import getStudent
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^students', studentList, name='students'),
+    url(r'^students/(?P<student_id>.+)$', getStudent, name='student'),
+    url(r'^students$', studentList, name='students'),
     url(r'^checkins/', checkinList, name='checkins')
 ]
