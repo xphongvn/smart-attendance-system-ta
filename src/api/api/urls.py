@@ -20,6 +20,6 @@ from checkins.views import checkinList
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^students/', studentList, name='students'),
+    url(r'^students', studentList, name='students'),
     url(r'^checkins/', checkinList, name='checkins')
 ]
