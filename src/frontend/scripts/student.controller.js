@@ -4,5 +4,9 @@ angular.module('SmartAttendanceSystem')
 function StudentCtrl(Student, CheckIn, $stateParams) {
 	this.user = Student.get({ id: $stateParams.id });
 
-	//this.checkIns = CheckIn.find(id);
+  this.user.$promise.then(user => {
+    this.checkIns = CheckIn.query({
+      classifyId: user.classifyId
+    });
+  });
 }

@@ -36,21 +36,14 @@
 
 
   <md-list>
-    <md-subheader class="md-no-sticky">Student</md-subheader>
-    <md-list-item>
-
-      <p>Picture and name</p>
-      <time>DATE & TIME</time>
-      <p><time datetime></time></p>
-      <dev>In/out</dev>
-    </md-list-item>
-
+    <md-subheader class="md-no-sticky">Checkins</md-subheader>
     <md-list-item ng-repeat="checkIn in vm.checkIns">
-      <img alt="{{ vm.user.name }}" src="{{ vm.user.picture }}" class="md-avatar" />
-      <p>{{ vm.user.name }}</p>
-      <p>{{ checkIn.dateTime }}</p>
-      <i class="zmdi zmdi-long-arrow-left zmdi-hc-3x" ng-if="checkIn.status == 'in'" style="color:green"></i>
-      <i class="zmdi zmdi-long-arrow-left zmdi-hc-3x" ng-if="checkIn.status == 'out'" style="color:red"></i>
+      <p style="text-align: center;">
+        {{ checkIn.createdAt*1000 | date:'medium' }}
+        <span style="display: inline-block; width: 50px;"></span>
+        <i class="zmdi zmdi-long-arrow-left zmdi-hc-lg" ng-if="checkIn.type == 'in'" style="color:green"></i>
+        <i class="zmdi zmdi-long-arrow-right zmdi-hc-lg" ng-if="checkIn.type == 'out'" style="color:red"></i>
+      </p>
     </md-list-item>
   </md-list>
 </div>
